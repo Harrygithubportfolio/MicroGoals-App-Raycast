@@ -2,7 +2,10 @@
 import { List, ActionPanel, Action, getPreferenceValues, Icon, Color } from "@raycast/api";
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+interface Preferences {
+  apiUrl: string;
+  apiKey: string; // Add this field to match your package.json
+}
 interface MicroGoal {
   _id: string;
   title: string;

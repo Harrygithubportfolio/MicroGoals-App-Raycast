@@ -1,8 +1,7 @@
-// backend/routes/goalRoutes.js
 const express = require('express');
 const router = express.Router();
 const Goal = require('../models/goalModel');
-const TemplateService = require('../services/templateService');
+//const AnthropicService = require('../services/anthropicService');
 
 // Get all goals for a user
 router.get('/', async (req, res) => {
@@ -35,8 +34,7 @@ router.post('/', async (req, res) => {
       description: req.body.description,
       category: req.body.category,
       targetDate: req.body.targetDate,
-      user: req.body.userId,
-      metadata: req.body.metadata || {}
+      user: req.body.userId
     });
     const newGoal = await goal.save();
     res.status(201).json(newGoal);
@@ -45,9 +43,10 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Generate microgoals using templates
+// Generate microgoals using AI
 router.post('/breakdown', async (req, res) => {
   try {
+    const TemplateService = require('../services/templateService');
     const templateService = new TemplateService();
     const microGoals = templateService.breakdownGoal(req.body.goalDetails);
     
