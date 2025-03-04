@@ -42,7 +42,11 @@ export default function Command() {
   useEffect(() => {
     async function fetchGoals() {
       try {
-        const response = await axios.get(`${preferences.apiUrl}/goals?userId=${preferences.userId}`);
+        const response = await axios.get(`${preferences.apiUrl}/goals?userId=000000000000000000000001`, {
+          headers: {
+            'x-api-key': preferences.apiKey
+          }
+        });
         setGoals(response.data);
       } catch (error) {
         console.error("Error fetching goals:", error);
