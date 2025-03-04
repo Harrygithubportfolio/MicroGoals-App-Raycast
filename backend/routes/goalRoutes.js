@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Goal = require('../models/goalModel');
-const AnthropicService = require('../services/anthropicService');
+//const AnthropicService = require('../services/anthropicService');
 
 // Get all goals for a user
 router.get('/', async (req, res) => {
@@ -46,8 +46,9 @@ router.post('/', async (req, res) => {
 // Generate microgoals using AI
 router.post('/breakdown', async (req, res) => {
   try {
-    const anthropicService = new AnthropicService(process.env.ANTHROPIC_API_KEY);
-    const microGoals = await anthropicService.breakdownGoal(req.body.goalDetails);
+    const TemplateService = require('../services/templateService');
+    const templateService = new TemplateService();
+    const microGoals = templateService.breakdownGoal(req.body.goalDetails);
     
     // Update the goal with the generated microgoals
     if (req.body.goalDetails.goalId) {
