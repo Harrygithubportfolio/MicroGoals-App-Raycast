@@ -1,0 +1,66 @@
+{
+  "name": "microgoals",
+  "title": "MicroGoals",
+  "description": "Break down large goals into manageable, bite-sized daily achievements",
+  "icon": "icon.png",
+  "author": "Harry",
+  "categories": [
+    "Other"
+  ],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "index",
+      "title": "View Goals",
+      "description": "View and manage your goals",
+      "mode": "view"
+    },
+    {
+      "name": "add-goal",
+      "title": "Add Goal",
+      "description": "Create a new goal",
+      "mode": "view"
+    },
+    {
+      "name": "check-microgoal",
+      "title": "Complete Micro-Goal",
+      "description": "Mark micro-goals as complete",
+      "mode": "view"
+    }
+  ],
+  "preferences": [
+    {
+      "name": "apiUrl",
+      "title": "API URL",
+      "description": "The URL of your MicroGoals backend API",
+      "type": "textfield",
+      "required": true,
+      "default": "http://localhost:3000/api"
+    },
+    {
+      "name": "userId",
+      "title": "User ID",
+      "description": "Your user ID from the MicroGoals app",
+      "type": "textfield",
+      "required": true,
+      "placeholder": "Enter your user ID"
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.48.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "~18.8.0",
+    "@types/react": "^18.0.0",
+    "axios": "^1.8.1",
+    "typescript": "^4.7.0"
+  },
+  "scripts": {
+    "dev": "ray develop",
+    "build": "ray build -e dist"
+  }
+}
